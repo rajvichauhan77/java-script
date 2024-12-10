@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>heigher order loops</title>
+</head>
+<body>
+
+    <button id="power">Power</button>
+    <button id="odd">odd</button>
+    <button id="even">even</button>
+    <button id="isprime">isprime</button>
+
+    <h1><div id="box"></div></h1>
+
+</body>
+
+    <script>
+
+        let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+        document.getElementById("power").onclick = function(){
+
+            let power = arr.map((ele) => ele*ele)
+
+            document.getElementById("box").innerHTML = `${power} </br>`
+
+        }
+
+        document.getElementById("odd").onclick = function(){
+            
+            let power = arr.filter((ele) => ele%2==1)
+
+            document.getElementById("box").innerHTML = `${power} </br>`
+
+        }
+
+
+        document.getElementById("even").onclick = function(){
+            
+            let power = arr.filter((ele) => ele%2==0)
+
+            document.getElementById("box").innerHTML = `${power} </br>`
+
+        }
+
+        document.getElementById("isprime").onclick = function(){
+
+            let power = arr.map((ele) => {
+
+                let count = 0
+
+                for(let i=2; i<ele; i++){
+                    if(ele%i==0){
+                        count++
+                    }
+                }
+
+                if(count==0){
+                    return "is prime"
+                }
+                else{
+                    return "is not prime"
+                }
+            })
+                document.getElementById("box").innerHTML = `${power} </br>`
+        }
+
+
+    </script>
+
+</html>
