@@ -1,0 +1,44 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+h1{
+    text-align: center;
+    padding: 3px;
+}
+.container{
+    border: 1px solid black;
+    margin: auto;
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    margin-top: 10px;
+}
+
+.slider{
+    
+    margin: auto;
+    width: fit-content;
+    align-items: center;
+    display: flex;
+    overflow: hidden;
+    /* overflow: scroll;  */
+}
+
+.slids{
+    
+    width: 800px;
+    display: flex;
+    margin: auto;
+    align-items: center;
+    translate: 0.5sec;
+
+}
+
+.slids img{
+    width: 800px;
+    padding: 5px;
+}
