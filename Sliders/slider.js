@@ -8,6 +8,7 @@ let sli = document.getElementsByClassName("sli")
 
 let count=0;
 
+
 function next(){
     if(count < sli_length -1){
       count++;
@@ -30,4 +31,17 @@ function prev(){
 
     slids.style.transform = `translateX(-${count*800}px)`
 }
+
+
+setInterval (function(){
+    
+    if(count < sli_length){
+        count++;
+    }
+    else{
+        count = 0;
+    }
+    slids.style.transform = `traslateX(-${count+800}px)`
+
+}, 1000)
 
