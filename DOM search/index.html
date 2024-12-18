@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>DOM</title>
+
+    <style>
+
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .container{
+            margin: auto;
+            max-width: 100%;
+        }
+        .d-flex{
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            /* border: 1px solid green; */
+        }
+
+        .bigbox{
+            width: 22%;
+            padding: 10px;
+            border: 1px solid orange;
+       
+        }
+
+        .box{
+            border-radius: 10px;
+            height: 100%;
+               box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.582);
+               padding: 10px;
+               width: 100%;
+               /* border: 1px solid red; */
+        }
+
+        .box > img{
+            width: 70%;
+            height: 300px;
+            border: 1px solid gainsboro;
+            aspect-ratio: 1/1;
+
+            
+        }
+        .buttons{
+            margin: 10px;
+            
+        }
+         
+        button{
+            padding: 10px;
+            color: blue;
+        }
+
+
+    </style>
+
+</head>
+<body>
+    
+    <div class="main" style="margin:40px auto; width:fit-content">
+        <input type="text" id="search" style="padding:10px 20px; font-size:21px; border:1px solid gray">
+      </div>
+
+    <div class="buttons">
+        <button id="viewall">All</button>
+        <button id="men">Men</button>
+        <button id="women">Women</button>
+        <button id="jewelery">jewelery</button>
+        <button id="low_sort">price⬇️</button>
+        <button id="high_sort">price⬆️</button>
+    </div>
+
+
+    <div class="container-fluid">
+        <div class="container">
+            <div id="boxes" class="d-flex">
+    
+            </div>
+        </div>
+    </div>
+    
+
+
+</body>
+
+    <script src="index.js"> </script>
+
+    <script>
+
+        let search = document.getElementById("#search")
+
+        search.addEventListener("keyup",function(e){
+            let val = e.target.value.toUpperCase();
+        })
+
+
+
+        let boxes = document.querySelector("#boxes")
+
+        let viewall = document.querySelector("#viewall");
+        let men = document.querySelector("#men");
+        let women = document.querySelector("#women");
+        let jewelery = document.querySelector("#jewelery");
+        let low_sort = document.querySelector("#low_sort")
+        let high_sort = document.querySelector("#high_sort")
+
+
+        viewall.addEventListener("click", () =>{
+            let subdata = data.map((ele) => ele)
+            console.log(subdata)
+            showData(subdata)
+        })
+
+
+        men.addEventListener("click", () =>{
+            let subdata = data.filter((ele) => ele.category == "men's clothing")
+            console.log(subdata)
+            showData(subdata)
+        })
+
+        women.addEventListener("click", () =>{
+            let subdata = data.filter((ele) => ele.category == "women's clothing")
+            console.log(subdata)
+            showData(subdata)
+        })
+
+        jewelery.addEventListener("click", () =>{
+            let subdata = data.filter((ele) => ele.category == "jewelery")
+            console.log(subdata)
+            showData(subdata)
+        })
+
+        high_sort.addEventListener("click", () =>{
+             data.sort((a,b) => a.price - b.price)
+             let subdata = data
+            showData(subdata)
+        })
+
+        
+       low_sort.addEventListener("click", () =>{
+             data.sort((a,b) => b.price - a.price)
+             let subdata = data
+            showData(subdata)
+        })
+
+
+
+
+
+
+
+
+function showData(subdata){
+
+            boxes.innerHTML = ""
+
+
+            subdata.map((ele) =>{
+
+            let box = document.createElement("div")
+            box.setAttribute("class", "Bigbox")
+
+            let sub_box = document.createElement("div")
+            sub_box.setAttribute("class", "box")
+
+            let title = document.createElement("h3")
+            let price = document.createElement("h2")
+            let img = document.createElement("img")
+
+
+            img.src = ele.image
+            title.textContent = `${ele.title}`
+            price.textContent = `${ele.price}`
+
+
+
+            sub_box.append(img, title, price)
+            box.append(sub_box)
+            boxes.append(box)
+
+
+})
+
+
+}
+
+
+
+
+        
+data.map((ele) =>{
+   
+           let box = document.createElement("div")
+            box.setAttribute("class", "Bigbox")
+
+            let sub_box = document.createElement("div")
+            sub_box.setAttribute("class", "box")
+
+            let title = document.createElement("h3")
+            let price = document.createElement("h2")
+            let img = document.createElement("img")
+
+
+            img.src = ele.image
+            title.textContent = `${ele.title}`
+            price.textContent = `${ele.price}`
+
+
+
+            sub_box.append(img, title, price)
+            box.append(sub_box)
+            boxes.append(box)
+
+                    
+})
+
+
+
+    </script>
+
+</html>
