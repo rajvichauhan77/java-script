@@ -4,44 +4,49 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <title>DOM</title>
+    <title>DOM Search</title>
 
     <style>
 
-        *{
+        /* *{
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
         .container{
             margin: auto;
-            max-width: 100%;
+           width: 100%;
+            border: 1px solid green; 
         }
         .d-flex{
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
-            /* border: 1px solid green; */
+             border: 1px solid green; 
         }
 
-        .bigbox{
-            width: 22%;
+
+
+        .boxes{
+            width: 100%;
             padding: 10px;
             border: 1px solid orange;
        
-        }
+        } 
+
 
         .box{
             border-radius: 10px;
             height: 100%;
                box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.582);
                padding: 10px;
-               width: 100%;
-               /* border: 1px solid red; */
+               width: 250px;
+                border: 1px solid red;
+                justify-content: center; 
         }
 
         .box > img{
-            width: 70%;
+            width: 100%;
             height: 300px;
             border: 1px solid gainsboro;
             aspect-ratio: 1/1;
@@ -51,53 +56,112 @@
         .buttons{
             margin: 10px;
             
-        }
-         
-        button{
-            padding: 10px;
-            color: blue;
-        }
-
+        } */
 
     </style>
 
 </head>
 <body>
-    
-    <div class="main" style="margin:40px auto; width:fit-content">
-        <input type="text" id="search" style="padding:10px 20px; font-size:21px; border:1px solid gray">
-      </div>
 
-    <div class="buttons">
-        <button id="viewall">All</button>
-        <button id="men">Men</button>
-        <button id="women">Women</button>
-        <button id="jewelery">jewelery</button>
-        <button id="low_sort">price⬇️</button>
-        <button id="high_sort">price⬆️</button>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Shoppimg kart</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Dropdown
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="#">Action</a></li>
+                  <li><a class="dropdown-item" href="#">Another action</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+              </li>
+            </ul>
+            <form class="d-flex">
+              <input class="form-control me-2" type="search" id="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success" id="search" type="submit">Search</button>
+            </form>
+          </div>
+        </div>
+      </nav>
+
+
+
+
+    
+    <!-- <div class="main" style="margin:40px auto; width:fit-content">
+        <input type="text" id="search" style="padding:10px 20px; font-size:21px; border:1px solid gray" placeholder="search items">
+      </div> -->
+
+      
+
+    <div class="buttons text-center my-5">
+        <button id="viewall" class="btn btn-outline-secondary ">All</button>
+        <button id="men" class="btn btn-outline-secondary ">Men</button>
+        <button id="women" class="btn btn-outline-secondary ">Women</button>
+        <button id="jewelery" class="btn btn-outline-secondary ">jewelery</button>
+        <button id="low_sort" class="btn btn-outline-secondary ">price⬇️</button>
+        <button id="high_sort" class="btn btn-outline-secondary ">price⬆️</button>
     </div>
 
 
     <div class="container-fluid">
         <div class="container">
-            <div id="boxes" class="d-flex">
-    
+            <div id="boxes" class="row row-cols-4 g-5">
+                
             </div>
+          
         </div>
     </div>
-    
+
+      <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="offcanvasExampleLabel">Offcanvas</h5>
+          <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+          <div>
+            Some text as placeholder. In real life you can have the elements you have chosen. Like, text, images, lists, etc.
+          </div>
+        </div>
+      </div>
+            
 
 
 </body>
-
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" ></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"></script>
     <script src="index.js"> </script>
 
     <script>
 
-        let search = document.getElementById("#search")
+
+
+        let search = document.getElementById("search")
 
         search.addEventListener("keyup",function(e){
             let val = e.target.value.toUpperCase();
+
+            let searchData = data.filter((ele) => !ele.title.toUpperCase().indexOf(val) || !ele.category.toUpperCase().indexOf(val)  )
+
+            console.log(searchData)
+
+            showData(searchData)
         })
 
 
@@ -152,75 +216,141 @@
 
 
 
+function eachdata(id){
+    
+ 
 
+    let eachdata = data.filter((ele) => ele.id == id )
+      console.log(eachdata)
 
+      showeachdata(eachdata)
+}
 
+let offcanvas = document.querySelector(".offcanvas-body")
 
+function showeachdata(eachdata){
 
-function showData(subdata){
+    eachdata.map((ele) => {
+        
+        offcanvas.innerHTML = `
+            <div class="card" style="width: 18rem;">
+                <img src="${ele.image}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">${ele.title}</h5>
+                    <p class="card-text">${ele.description}</p>
+                    <ul class="list-group list-group-flush">
+                    <li class="list-group-item">${ele.category}</li>
+                    <li class="list-group-item">${ele.price}</li>
+                    <li class="list-group-item">${ele.rating.rate} | ${ele.rating.count}</li>
+                </ul>
+                   
+                </div>
+                </div>
+        `
 
-            boxes.innerHTML = ""
-
-
-            subdata.map((ele) =>{
-
-            let box = document.createElement("div")
-            box.setAttribute("class", "Bigbox")
-
-            let sub_box = document.createElement("div")
-            sub_box.setAttribute("class", "box")
-
-            let title = document.createElement("h3")
-            let price = document.createElement("h2")
-            let img = document.createElement("img")
-
-
-            img.src = ele.image
-            title.textContent = `${ele.title}`
-            price.textContent = `${ele.price}`
-
-
-
-            sub_box.append(img, title, price)
-            box.append(sub_box)
-            boxes.append(box)
-
-
-})
-
+    })
 
 }
 
 
 
+function showData(subdata){
+  boxes.innerHTML = "";
 
-        
+            subdata.map((ele) =>{
+
+    boxes.innerHTML += `
+
+            <div class="col">
+                <div class="box">
+                    <div class="card" style="width: 18rem; Height: 500px;">
+                        <img src="${ele.image}" Height="300px" class="card-img-top" alt="...">
+                        <div class="card-body">
+                        <h5 class="card-title">${ele.title}</h5>
+                        <p class="card-text">${ele.category}</p>
+                         <a onclick="eachdata(${ele.id})" class="btn btn-primary" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample"> More
+                        </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            `
+                
+
+            // let box = document.createElement("div")
+            // box.setAttribute("class", "Bigbox")
+
+            // let sub_box = document.createElement("div")
+            // sub_box.setAttribute("class", "box")
+
+            // let title = document.createElement("h3")
+            // let price = document.createElement("h2")
+            // let img = document.createElement("img")
+            // let btn = document.createElement("button")
+
+
+            // img.src = ele.image
+            // title.textContent = `${ele.title}`
+            // price.textContent = `${ele.price}`
+            // btn.textContent = `Show more`
+            // sub_box.append(img, title, price, btn)
+            // box.append(sub_box)
+            // boxes.append(box)
+
+})
+}
+
 data.map((ele) =>{
    
-           let box = document.createElement("div")
-            box.setAttribute("class", "Bigbox")
+    boxes.innerHTML += `
 
-            let sub_box = document.createElement("div")
-            sub_box.setAttribute("class", "box")
+                <div class="col">
+                    <div class="box">
+                        <div class="card" style="width: 18rem ; Height: 500px;">
+                            <img src="${ele.image}" Height="300px" class="card-img-top" alt="...">
+                            <div class="card-body">
+                              <h5 class="card-title">${ele.title}</h5>
+                              <p class="card-text">${ele.category}</p>
+                                                <a onclick="eachdata(${ele.id})" class="btn btn-primary" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+                                More
+                            </a>
+                                                </div>
+                          </div>
+                    </div>
+                </div>
+    
+            `
 
-            let title = document.createElement("h3")
-            let price = document.createElement("h2")
-            let img = document.createElement("img")
-
-
-            img.src = ele.image
-            title.textContent = `${ele.title}`
-            price.textContent = `${ele.price}`
 
 
 
-            sub_box.append(img, title, price)
-            box.append(sub_box)
-            boxes.append(box)
+        //    let box = document.createElement("div")
+        //     box.setAttribute("class", "Bigbox")
 
-                    
+        //     let sub_box = document.createElement("div")
+        //     sub_box.setAttribute("class", "box")
+
+        //     let title = document.createElement("h3")
+        //     let price = document.createElement("h2")
+        //     let img = document.createElement("img")
+        //     let btn = document.createElement("button")
+
+
+        //     img.src = ele.image
+        //     title.textContent = `${ele.title}`
+        //     price.textContent = `${ele.price}`
+        //     btn.textContent =   `Show more`
+
+
+
+            // sub_box.append(img, title, price, btn)
+            // box.append(sub_box)
+            // boxes.append(box)
+         
 })
 
+
+  
 
 
     </script>
