@@ -108,7 +108,7 @@
         <input type="text" id="search" style="padding:10px 20px; font-size:21px; border:1px solid gray" placeholder="search items">
       </div> -->
 
-      
+
 
     <div class="buttons text-center my-5">
         <button id="viewall" class="btn btn-outline-secondary ">All</button>
@@ -268,6 +268,7 @@ function showData(subdata){
                         <div class="card-body">
                         <h5 class="card-title">${ele.title}</h5>
                         <p class="card-text">${ele.category}</p>
+                        <p class="card-text">${ele.price}</p>
                          <a onclick="eachdata(${ele.id})" class="btn btn-primary" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample"> More
                         </a>
                         </div>
@@ -311,6 +312,7 @@ data.map((ele) =>{
                             <div class="card-body">
                               <h5 class="card-title">${ele.title}</h5>
                               <p class="card-text">${ele.category}</p>
+                               <p class="card-text">${ele.price}</p>
                                                 <a onclick="eachdata(${ele.id})" class="btn btn-primary" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
                                 More
                             </a>
