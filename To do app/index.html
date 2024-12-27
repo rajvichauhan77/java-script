@@ -14,14 +14,13 @@
 
       
 
-    <div class="container border p-5 my-5 rounded-3 shadow" >
+    <div class="container border p-5 my-5 rounded-3 shadow col-12" style="background-color: #7E99A3;">
 
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark rounded-3">
             <div class="container-fluid">
-              <a class="navbar-brand text-center" href="#"><h3>Todo List</h3></a>
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
+              <a class="navbar-brand text-center" href="#" ><h3>Todo List</h3></a>
+
+              
               <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 
                 <!-- <form class=" text-end d-flex">
@@ -36,10 +35,13 @@
 
 
 
+     <input type="text" class="mt-5 border rounded-3 px-3" id="search" placeholder="Search here">
 
 
+        <div class="container my-4 col-12">
 
-        <div class="container my-5">
+      
+
             <form action="" id="form">
 
                 <div class="row ">
@@ -60,7 +62,8 @@
          
         </div>
 
-
+        <button class="btn btn-warning m-4" onclick="complete()"> Filter</button>
+        <button class="btn btn-warning m-4" onclick="uncomplete()"> Unfilter</button>
 
         <div class="container">
             <table class="table">
@@ -86,6 +89,12 @@
    
         
     </div>
+    
+
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+      
+        </div>
+    
 
 
 </body>
