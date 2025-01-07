@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
     <title>Add to cart</title>
 
     <style>
@@ -58,23 +60,228 @@
             
         } */
 
+        /* .box{
+          height: 100%;
+        }
+        .card{
+          height: 100%;
+        } */
+
+
+/*      
+        body {
+      position: relative;
+     
+    }
+
+    body {
+      background: #eee;
+      font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      color: #000;
+      margin: 0;
+      padding: 0;
+    } */
+
+    .swiper {
+      width: 100%;
+      height: 100%;
+    }
+
+    .swiper-slide {
+      text-align: center;
+      font-size: 18px;
+      background: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      
+    }
+
+    .site-footer
+      {
+        background-color:#26272b;
+        padding:45px 0 20px;
+        font-size:15px;
+        line-height:24px;
+        color:#737373;
+      }
+      .site-footer hr
+      {
+        border-top-color:#bbb;
+        opacity:0.5
+      }
+      .site-footer hr.small
+      {
+        margin:20px 0
+      }
+      .site-footer h6
+      {
+        color:#fff;
+        font-size:16px;
+        text-transform:uppercase;
+        margin-top:5px;
+        letter-spacing:2px
+      }
+      .site-footer a
+      {
+        color:#737373;
+      }
+      .site-footer a:hover
+      {
+        color:#3366cc;
+        text-decoration:none;
+      }
+      .footer-links
+      {
+        padding-left:0;
+        list-style:none
+      }
+      .footer-links li
+      {
+        display:block
+      }
+      .footer-links a
+      {
+        color:#737373
+      }
+      .footer-links a:active,.footer-links a:focus,.footer-links a:hover
+      {
+        color:#3366cc;
+        text-decoration:none;
+      }
+      .footer-links.inline li
+      {
+        display:inline-block
+      }
+      .site-footer .social-icons
+      {
+        text-align:right
+      }
+      .site-footer .social-icons a
+      {
+        width:40px;
+        height:40px;
+        line-height:40px;
+        margin-left:6px;
+        margin-right:0;
+        border-radius:100%;
+        background-color:#33353d
+      }
+      .copyright-text
+      {
+        margin:0
+      }
+      @media (max-width:991px)
+      {
+        .site-footer [class^=col-]
+        {
+          margin-bottom:30px
+        }
+      }
+      @media (max-width:767px)
+      {
+        .site-footer
+        {
+          padding-bottom:0
+        }
+        .site-footer .copyright-text,.site-footer .social-icons
+        {
+          text-align:center
+        }
+      }
+      .social-icons
+      {
+        padding-left:0;
+        margin-bottom:0;
+        list-style:none
+      }
+      .social-icons li
+      {
+        display:inline-block;
+        margin-bottom:4px
+      }
+      .social-icons li.title
+      {
+        margin-right:15px;
+        text-transform:uppercase;
+        color:#96a2b2;
+        font-weight:700;
+        font-size:13px
+      }
+      .social-icons a{
+        background-color:#eceeef;
+        color:#818a91;
+        font-size:16px;
+        display:inline-block;
+        line-height:44px;
+        width:44px;
+        height:44px;
+        text-align:center;
+        margin-right:8px;
+        border-radius:100%;
+        -webkit-transition:all .2s linear;
+        -o-transition:all .2s linear;
+        transition:all .2s linear
+      }
+      .social-icons a:active,.social-icons a:focus,.social-icons a:hover
+      {
+        color:#fff;
+        background-color:#29aafe
+      }
+      .social-icons.size-sm a
+      {
+        line-height:34px;
+        height:34px;
+        width:34px;
+        font-size:14px
+      }
+      .social-icons a.facebook:hover
+      {
+        background-color:#3b5998
+      }
+      .social-icons a.twitter:hover
+      {
+        background-color:#00aced
+      }
+      .social-icons a.linkedin:hover
+      {
+        background-color:#007bb6
+      }
+      .social-icons a.dribbble:hover
+      {
+        background-color:#ea4c89
+      }
+      @media (max-width:767px)
+      {
+        .social-icons li.title
+        {
+          display:block;
+          margin-right:0;
+          font-weight:600
+        }
+      }
+
     </style>
 
 </head>
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
         <div class="container-fluid d-flex text-center">
-          <a class="navbar-brand me-5  fs-3" href="#">Shoppimg kart</a>
+          <a class="navbar-brand fs-3" href="#">Shopping kart</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <!-- <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
+            <ul class="navbar-nav  me-auto mb-2 mb-lg-0">
+              <li class="nav-item ms-4">
+                <a class="nav-link active" aria-current="page" href="index.html">Home</a>
               </li>
-              <li class="nav-item">
+
+             
+
+              <!-- <li class="nav-item">
                 <a class="nav-link" href="#">Link</a>
               </li>
               <li class="nav-item dropdown">
@@ -90,15 +297,42 @@
               </li>
               <li class="nav-item">
                 <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-              </li>
-            </ul> -->
-            <form class="d-flex ms-5 text-end">
-              <input class="form-control ms-5  " type="search" id="search" placeholder="Search" aria-label="Search">
+              </li> --> 
+              
 
-              <a href="cart.html">🛒</a>
+
+              <!-- <a href="register.html"><button class="btn btn-outline-secondary ms-2">Register</button></a>
+            
+             <a href="login.html"><button class="btn btn-outline-secondary ms-2">login</button></a> -->
+
+             
+           
+              <div class="dropdown ms-2">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                 👤
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1" id="auth">
+                 
+                </ul>
+              </div>
+              
+
+            </ul>
+            <form class="d-flex ">
+               <input class="form-control ms-5 mt-4" type="search" id="search" placeholder="Search" aria-label="Search">
+             
+           
+
+              <!-- <input class="form-control ms-5 " type="search" id="search" placeholder="Search" aria-label="Search"> -->
+
+           
               
             </form>
           </div>
+          <a href="cart.html" class="btn btn-outline-dark h2 fs-3 mt-2 d-flex my-auto mx-3 text-decoration-none">
+            <p id="cartlength" class="text-light text-end h6 "></p>
+            🛒
+          </a>
         </div>
       </nav>
 
@@ -120,6 +354,28 @@
         <input type="text" id="search" style="padding:10px 20px; font-size:21px; border:1px solid gray" placeholder="search items">
       </div> -->
 
+      <div class="p-2 ">
+
+        <div class="swiper">
+          <div class="swiper-wrapper mb-4">
+            <div class="swiper-slide"><img src="https://rukminim2.flixcart.com/fk-p-flap/1620/270/image/c4a4c37d9fa12546.jpg?q=20" alt="" class="h-75 w-100"></div>
+            <div class="swiper-slide"><img src="https://rukminim2.flixcart.com/fk-p-flap/1620/270/image/be168a4f35799055.jpg?q=20" alt="" class="h-75 w-100"></div>
+            <div class="swiper-slide"><img src="https://rukminim2.flixcart.com/fk-p-flap/1620/270/image/c4a4c37d9fa12546.jpg?q=20" alt="" class="h-75 w-100"></div>
+            <div class="swiper-slide"><img src="https://rukminim2.flixcart.com/fk-p-flap/1620/270/image/be168a4f35799055.jpg?q=20" alt="" class="h-75 w-100"></div>
+            <div class="swiper-slide"><img src="https://rukminim2.flixcart.com/fk-p-flap/1620/270/image/c4a4c37d9fa12546.jpg?q=20" alt="" class="h-75 w-100"></div>
+            
+          </div>
+          <!-- Add Pagination -->
+          <div class="swiper-pagination"></div>
+          <!-- Add Navigation -->
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div>
+        </div>
+
+      </div>
+     
+
+
 
 
     <div class="buttons text-center my-5">
@@ -134,12 +390,13 @@
 
     <div class="container-fluid">
         <div class="container">
-            <div id="boxes" class="row row-cols-lg-4   g-4">
+            <div id="boxes" class="row row-cols-lg-4 row-cols-md-2 row-cols-sm-2 row-cols-2  g-3  " >
                 
             </div>
           
         </div>
     </div>
+
 
       <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
         <div class="offcanvas-header">
@@ -152,16 +409,107 @@
           </div>
         </div>
       </div>
-            
+         
+        <!-- Site footer -->
+    <footer class="site-footer mt-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12 col-md-6">
+            <h6>About</h6>
+            <p class="text-justify">Scanfcode.com <i>CODE WANTS TO BE SIMPLE </i> is an initiative  to help the upcoming programmers with the code. Scanfcode focuses on providing the most efficient code or snippets as the code wants to be simple. We will help programmers build up concepts in different programming languages that include Cloths,Electronics, Jewelary,Winter cloths, Men's wear, Women's wear.</p>
+          </div>
+
+          <div class="col-xs-6 col-md-3">
+            <h6>Categories</h6>
+            <ul class="footer-links">
+              <li><a href="http://scanfcode.com/category/c-language/" class="text-decoration-none">Cloths</a></li>
+              <li><a href="http://scanfcode.com/category/front-end-development/" class="text-decoration-none">Electronics</a></li>
+              <li><a href="http://scanfcode.com/category/back-end-development/" class="text-decoration-none">Jewelary</a></li>
+              <li><a href="http://scanfcode.com/category/java-programming-language/" class="text-decoration-none">Winter cloths</a></li>
+              <li><a href="http://scanfcode.com/category/android/" class="text-decoration-none">Men's wear</a></li>
+              <li><a href="http://scanfcode.com/category/templates/" class="text-decoration-none">Women's wear</a></li>
+            </ul>
+          </div>
+
+          <div class="col-xs-6 col-md-3">
+            <h6>Quick Links</h6>
+            <ul class="footer-links">
+              <li><a href="http://scanfcode.com/about/" class="text-decoration-none">About Us</a></li>
+              <li><a href="http://scanfcode.com/contact/" class="text-decoration-none">Contact Us</a></li>
+              <li><a href="http://scanfcode.com/contribute-at-scanfcode/" class="text-decoration-none">Contribute</a></li>
+              <li><a href="http://scanfcode.com/privacy-policy/" class="text-decoration-none">Privacy Policy</a></li>
+              <li><a href="http://scanfcode.com/sitemap/" class="text-decoration-none">Sitemap</a></li>
+            </ul>
+          </div>
+        </div>
+        <hr>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8 col-sm-6 col-xs-12">
+            <p class="copyright-text">Copyright &copy; All Rights Reserved by 
+         <a href="#">RC</a>.
+            </p>
+          </div>
+
+    
+        </div>
+      </div>
+</footer>
 
 
 </body>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" ></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"></script>
     <script src="index.js"> </script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
     <script src="script.js"></script>
 
  
+  
+<script>
+
+  let activeUser = JSON.parse(localStorage.getItem("activeUser"))
+
+  let auth = document.getElementById("auth")
+
+  auth.innerHTML = `
+
+
+  
+          ${
+              activeUser
+              ?
+              `
+              <li><a class="dropdown-item" href="#">Name : ${activeUser.name}</a></li>
+              <li><a class="dropdown-item" href="#">Email : ${activeUser.mail}</a></li>
+              <li><a class="dropdown-item" href="#">Phone no : ${activeUser.phone}</a></li>
+
+              <button onclick="logOut()" class="btn btn-outline-danger ms-3">Log Out</button>
+
+                      
+              `
+              :
+
+              `
+               <a href="login.html"><button class="btn btn-outline-secondary ms-2 ">login</button></a>
+
+                <a href="register.html"><button class="btn btn-outline-secondary ms-2">Register</button></a>
+            
+              
+              `
+                  }
+
+  `
+
+
+
+  function logOut(){
+      localStorage.removeItem("activeUser")
+      location.reload()
+  }
+
+</script>
 
 </html>

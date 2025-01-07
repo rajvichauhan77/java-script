@@ -1,5 +1,6 @@
 
 
+
 let boxes = document.querySelector("#boxes")
 
 let viewall = document.querySelector("#viewall");
@@ -10,9 +11,10 @@ let low_sort = document.querySelector("#low_sort")
 let high_sort = document.querySelector("#high_sort")
 
 
-
-window.onload= showData(data);
 let cartData = JSON.parse(localStorage.getItem("cartData")) || []
+window.onload= showData(data);
+
+    let offcanvas = document.querySelector(".offcanvas-body")
 
 
 
@@ -72,40 +74,118 @@ low_sort.addEventListener("click", () =>{
 
 
 
+
+
 function setCart(cd){
     localStorage.setItem("cartData",JSON.stringify(cd))
 
 }
-
-
-
-
-
 function addCart(id){
     
+  if(activeUser){
 
-    console.log(id)
-
-    let newcartData = data.filter((ele) => ele.id == id )
-    
-    console.log(newcartData)
-
-
-    cartData = [...cartData, ...newcartData]
+    let newcartData = data.filter((ele) => ele.id == id ).map((ele) =>{
+      if(ele.id == id){
+          ele.quantity = 1
+      }
+      return ele
+  })
   
+  console.log(newcartData)
+
+
+  cartData = [...cartData, ...newcartData]
+
+ 
+  // console.log(cartData)
+  // showCart()
+
+   setCart(cartData)
+      showData(data)
+   document.getElementById("cartlength").innerHTML = cartData.length
+   showData(data)
+
+
+  }
+  else{
+
+    location.href = "register.html"
+
+  }
+
+    // console.log(id)
+
    
-    // console.log(cartData)
-    // showCart()
-
-     setCart(cartData)
-
-    // document.getElementById("cartlength").innerHTML = cartData.length
+}
 
 
+     document.getElementById("cartlength").innerHTML = cartData.length;
+
+function removeItem(id){
+
+    let remcartData = cartData.filter((ele) => ele.id != id)
+
+
+    setCart(remcartData)
+
+    cartData = JSON.parse(localStorage.getItem("cartData"))
+    showCart(cartData)
+   
+}
+
+
+function incCount(id){
+    cartData = cartData.map((ele) => {
+        if(ele.id == id){
+            ele.quantity += 1
+        }
+        return ele
+    })
+
+
+setCart(cartData)
+showData(data)
+    showCart(cartData)
+}
+
+
+function decCount(id){
+    cartData = cartData.map((ele) => {
+        if(ele.id == id){
+            if(ele.quantity > 1){
+                ele.quantity -= 1
+            }
+            else{
+                return ele = null
+            }
+        }
+        return ele
+    }).filter((ele) => ele != null)
+
+
+    setCart(cartData)
+    showData(data)
+    showCart(cartData)
 }
 
 
 
+function checkCart(id){
+
+    let cartData = JSON.parse(localStorage.getItem("cartData")) || []
+
+    cartData = cartData.filter((ele) => ele.id == id)
+
+    return !cartData[0]
+}
+
+
+function checkQuantity(id){
+   
+  let  cart =  cartData.filter((ele) => ele.id == id)
+    return cart[0].quantity
+   
+}
 
 
 function eachdata(id){
@@ -114,9 +194,6 @@ let eachdata = data.filter((ele) => ele.id == id )
 console.log(eachdata)
 showeachdata(eachdata)
 }
-
-
-let offcanvas = document.querySelector(".offcanvas-body")
 
 function showeachdata(eachdata){
 
@@ -141,7 +218,6 @@ offcanvas.innerHTML = `
         </div>
 
 `
-
 })
 
 }
@@ -157,22 +233,54 @@ boxes.innerHTML = "";
 
 boxes.innerHTML += `
 
-    <div class="col">
-        <div class="box">
-            <div class="card" style="width: 18rem; Height: 550px;">
-                <img src="${ele.image}" Height="300px" class="card-img-top" alt="...">
-                <div class="card-body">
+    <div class="col "  >
+        <div class="box h-100 w-100" >
+            <div class="card h-100 w-100" >
+                <img src="${ele.image}" height="300px";  class="card-img-top w-100 p-3" alt="...">
+                <div class="card-body" >
                 <h5 class="card-title">${ele.title}</h5>
                 <p class="card-text">${ele.category}</p>
-                <p class="card-text">${ele.price}</p>
-                 <a onclick="eachdata(${ele.id})" class="btn btn-secondary" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample"> More
-                </a>
-               
-                <button onclick="addCart(${ele.id})" class="btn btn-primary ms-5">
-                    Add to cart
-                </button>
+                
+                <p class="card-text h5 fw-bolder text-dark">$${ele.price}
+                    <span class="ms-5 text-normal">${ele.rating.rate}⭐</span>
+                </p>
+                
+        
+              
 
                  
+               
+                ${
+                    !checkCart(ele.id)
+                    ?
+                    `
+                        <button onclick="incCount(${ele.id})" class="btn btn-outline-danger btn-sm ms-4">+</button>
+                        <button class="btn-outline-primary text-dark btn-sm">${checkQuantity(ele.id)}</button>
+                        <button onclick="decCount(${ele.id})" class="btn btn-outline-danger btn-sm">−</button>
+                    
+                    `
+                    :
+                    `
+                    <div class="row row-cols-lg-2 row-cols-md-2 row-cols-sm-1 row-cols-1 g-2">
+                        <div class="col">
+                          <button onclick="addCart(${ele.id})" class="btn btn-primary w-100 ">
+                          Add to cart
+                          </button>
+                        </div>
+
+                        <div class="col">
+                            <a onclick="eachdata(${ele.id})" class="btn btn-secondary w-100" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample"> More
+                            </a>
+                        </div>
+                    </div>
+                        
+
+                           
+
+                    `
+                }
+
+                
 
                 </div>
             </div>
@@ -180,12 +288,94 @@ boxes.innerHTML += `
     </div>
 
     `
-        
-
-
 })
 }
 
 
 
+
+
+
+
+function myPlugin({ swiper, extendParams, on }) {
+    extendParams({
+      debugger: false,
+    });
+
+    on('init', () => {
+      if (!swiper.params.debugger) return;
+      console.log('init');
+    });
+    on('click', (swiper, e) => {
+      if (!swiper.params.debugger) return;
+      console.log('click');
+    });
+    on('tap', (swiper, e) => {
+      if (!swiper.params.debugger) return;
+      console.log('tap');
+    });
+    on('doubleTap', (swiper, e) => {
+      if (!swiper.params.debugger) return;
+      console.log('doubleTap');
+    });
+    on('sliderMove', (swiper, e) => {
+      if (!swiper.params.debugger) return;
+      console.log('sliderMove');
+    });
+    on('slideChange', () => {
+      if (!swiper.params.debugger) return;
+      console.log(
+        'slideChange',
+        swiper.previousIndex,
+        '->',
+        swiper.activeIndex
+      );
+    });
+    on('slideChangeTransitionStart', () => {
+      if (!swiper.params.debugger) return;
+      console.log('slideChangeTransitionStart');
+    });
+    on('slideChangeTransitionEnd', () => {
+      if (!swiper.params.debugger) return;
+      console.log('slideChangeTransitionEnd');
+    });
+    on('transitionStart', () => {
+      if (!swiper.params.debugger) return;
+      console.log('transitionStart');
+    });
+    on('transitionEnd', () => {
+      if (!swiper.params.debugger) return;
+      console.log('transitionEnd');
+    });
+    on('fromEdge', () => {
+      if (!swiper.params.debugger) return;
+      console.log('fromEdge');
+    });
+    on('reachBeginning', () => {
+      if (!swiper.params.debugger) return;
+      console.log('reachBeginning');
+    });
+    on('reachEnd', () => {
+      if (!swiper.params.debugger) return;
+      console.log('reachEnd');
+    });
+  }
+
+
+
+  // Init Swiper
+  var swiper = new Swiper('.swiper', {
+    // Install Plugin To Swiper
+    modules: [myPlugin],
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+    // Enable debugger
+    debugger: true,
+  });
 

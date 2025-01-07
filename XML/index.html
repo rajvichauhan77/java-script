@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>xhr</title>
+</head>
+<body>
+    
+    <h1>XHR</h1>
+
+</body>
+
+    <script>
+
+
+
+        // let requesturl = 'https://fakestoreapi.com/products'
+
+
+        let xhr = new XMLHttpRequest()
+
+        xhr.open('GET','https://fakestoreapi.com/products')
+
+        xhr.onreadystatechange = function(){
+            if(xhr.readyState == 1){
+                console.log("data unset: " + xhr.readyState)
+            }
+            if(xhr.readyState == 2){
+
+                console.log("open: "+ xhr.readyState)
+            }
+            if(xhr.readyState == 3){
+                console.log("loading: " + xhr.readyState)
+            }
+            if(xhr.readyState == 4){
+                  data = JSON.parse(xhr.responseText)
+                  console.log(data.results)
+            }
+        }
+
+        xhr.send()
+    </script>
+
+</html>
