@@ -1,0 +1,114 @@
+.logo{
+	font-size:30px;
+	font-weight:1000;
+	font-style:bold;
+	margin:1px 0px 0px 0px;
+	width:20%;
+ display:inline-block;  
+ color:white;
+}
+li:first-child{
+	 
+	 
+}
+li:nth-child(3n){
+	 
+}
+nav{
+	display:inline-block;
+	width:100%;
+	border:1px solid red;
+	background-color:#333333
+}
+ul{
+	display:inline-block;
+	border:1px solid red;
+	width:70%;
+	text-align:end;
+	
+}
+
+ul > li{
+	border:1px solid red;
+	display:inline-block;
+	
+
+}
+
+ul > li> a{
+
+text-decoration:none;
+color:white
+
+}
+.services{
+	font-size:50px;
+	font-weight:1000;
+	font-style:bold;
+	margin:auto;
+	width:90%;
+	box-shadow:0px 0px 2px 7px grey;
+	text-align:center;
+}
+.hero{
+	font-size:50px;
+	font-weight:1000;
+	font-style:bold;
+	margin:auto;
+	width:90%;
+	box-shadow:0px 0px 2px 7px grey;
+	text-align:center;
+}
+nav li{
+	 
+	/* margin:32px 880px 0px 850px; */
+	 display:inline-block; 
+
+	
+}
+.about{
+		font-size:50px;
+	font-weight:1000;
+	font-style:bold;
+	margin:auto;
+	width:90%;
+	box-shadow:0px 0px 2px 7px grey;
+	text-align:center;
+}
+.contact{	font-size:50px;
+	font-weight:1000;
+	font-style:bold;
+	margin:auto;
+	width:90%;
+	box-shadow:0px 0px 2px 7px grey;
+	text-align:center;}
+
+h1{
+	font-size:50px;
+	font-weight:100;
+	font-style:italic;
+}
+h2{
+	font-size:50px;
+	font-weight:100;
+	font-style:italic;
+}
+
+
+p{
+	font-size:20px;
+	font-weight:200;
+}
+.btn{
+	background-color:#ffd384;
+	font-size:30px;
+	border-radius:10px;
+}
+h3{
+	font-size:35px;
+	font-weight:800;
+}
+.service{
+	display:inline-block;
+	margin:10px 22px 10px 22px;
+}
