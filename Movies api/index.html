@@ -9,11 +9,31 @@
 </head>
 <body>
     
+    <div class="container p-4 m-auto my-3 border">
+        <div class="row">
+            <div class="col-4">
+                <select name="" id="genre">
+                   
+                </select>
+            </div>
+            <div class="col-4">
+                <input type="text" id="search" class="form-control" placeholder="Search movies">
+            </div>
+        </div>
+    </div>
+
+
     <div class="container border p-3">
         <div class="row g-2" id="movies">
         
         </div>
-        </div>
+    </div>
+
+    <div class="container my-5">
+        <nav aria-label="Page navigation example" id="pagination" class="row ">
+            
+          </nav>
+    </div>
     
 
 </body>
@@ -27,8 +47,28 @@
         .then((data) =>{
             console.log(data)
             showMovies(data.results)
+            pages(data.page)
             
         })
+
+
+        fetch(`https://api.themoviedb.org/3/genre/movie/list?language=en`)
+
+
+
+
+        function changePage(p){
+
+            fetch(`https://api.themoviedb.org/3/movie/popular?api_key=617dfba34fac3c6681f2189d8b17203e&page=${p}`)
+            .then((res) =>{
+                return res.json()
+            })
+            .then((data) =>{
+                console.log(data)
+                showMovies(data.results)
+                pages(data.page)
+            })
+        }
 
 
 
@@ -50,6 +90,43 @@
                 `
             })
         }
+
+
+        function pages(page){
+
+            document.getElementById("pagination").innerHTML = `
+
+            <ul class="pagination">
+              <li class="page-item"><a class="page-link" onclick="changePage(${page-1})">Prev</a></li>
+              <li class="page-item"><a class="page-link" >${page}</a></li>
+              <li class="page-item"><a class="page-link" onclick="changePage(${page+1})">Next</a></li>
+            </ul>
+
+            `
+        }
+
+
+        function showGenres(gen){
+            gen.map((ele) =>{
+                document.getElementById("genre").innerHTML += `
+                     <option value="${ele.id}">${ele.name}</option>
+                `
+            })
+        }
+
+        document.getElementById("genre").addEventListener("change", function(e){
+            console.log(e.target.value)
+
+            fetch(`https://api.themoviedb.org/3/movie/${e.target.value}/similar?api_key=617dfba34fac3c6681f2189d8b17203e&page=1`)
+            .then((res) =>{
+                return res.json()
+            })
+            .then((data) => {
+                console.log(data)
+                showMovies(data.results)
+                pages(data.page)
+            })
+        })
 
     </script>
 
