@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <title>Movie API</title>
+</head>
+<body>
+    
+
+    <div class="container p-4 m-auto my-3 border">
+        <div class="row">
+
+            <div class="col-3" id="tvmovie">
+                <div class="btn-group" role="group" >
+                    <input type="radio" class="btn-check" value="movie"  name="btnradio" id="btnradio1" autocomplete="off" checked>
+   
+                   <label class="btn btn-outline-primary" for="btnradio1">Movie</label>
+   
+                   <input type="radio" class="btn-check" value="tv"  name="btnradio" id="btnradio2" autocomplete="off">
+   
+                   <label class="btn btn-outline-primary" for="btnradio2">TV show</label>
+                   </div>
+                
+
+              </div>
+
+              <div class="col-3">
+
+                   <input type="checkbox" value="hi" class="lang"> <label for="">Hindi</label>
+                   <input type="checkbox" value="te" class="lang"> <label for="">Telagu</label>
+                   <input type="checkbox" value="ml" class="lang"> <label for="">Malyalam</label>
+                   <input type="checkbox" value="ta" class="lang"> <label for="">Tamil</label>
+
+                <button class="btn btn-sm btn-outline-secondary mt-1" onclick="filter()">Filter</button>
+
+              </div>
+
+            <div class="col-3">
+                <select name="genre" id="genre">
+                   
+                </select>
+            </div>
+
+            <div class="col-3 ">
+                <input type="text" id="search" class="form-control" placeholder="Search movies">
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="container border p-3">
+        <div class="row g-2" id="movies">
+        
+        </div>
+    </div>
+
+    <div class="container my-5">
+        <nav aria-label="Page navigation example" id="pagination" class="row ">
+            
+          </nav>
+    </div>
+    
+
+</body>
+
+
+<script src="index.js"></script>
+
+</html>
