@@ -1,4 +1,5 @@
 let stream_type = JSON.parse(localStorage.getItem("stream_type"))
+let lang = JSON.parse(localStorage.getItem("lang"))
 
 let b_url = `https://api.themoviedb.org/3/`
 
@@ -10,14 +11,34 @@ let d_endpoint = `discover/${stream_type ? stream_type : `movie`}`
 
 let genre_endpoint = `genre/movie/list`
 
+let end_lang = `&with_original_language=${lang.join("|")}`
 
 let genre_url = b_url+genre_endpoint+key
 
-let api_url = b_url+d_endpoint+key;
+let api_url = b_url+d_endpoint+key ;
 
 
 
 let page = 1
+
+
+function filter(){
+
+    let filter_arr = []
+    let filt = document.querySelectorAll(".lang")
+
+    filt.forEach((ele) =>{
+        if(ele.checked){
+            filter_arr.push(ele.value)
+        }
+    })
+    console.log(filter_arr)
+
+    localStorage.setItem("lang", JSON.stringify(filter_arr))
+
+    getMovies(api_url+`&with_original_language=${filter_arr.join("|")}`,page)
+}
+
 
 
 getMovies(api_url, page)
@@ -154,9 +175,11 @@ function pages(page){
 function showGenres(gen){
     gen.map((ele) =>{
         document.getElementById("genre").innerHTML += `
-             <div class="dropdown-item" ><input type="checkbox" value="${ele.id}" class="gen" /> ${ele.name}</div>
+             <div class="dropdown-item" ><input type="checkbox" value="${ele.id}" class="gen" /> ${ele.vote_average
+             }</div>
         `
     })
+    console.log(showGenres)
 }
 
 document.getElementById("genre").addEventListener("change", function(e){
