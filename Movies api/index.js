@@ -1,17 +1,16 @@
 let stream_type = JSON.parse(localStorage.getItem("stream_type"))
 let lang = JSON.parse(localStorage.getItem("lang"))
 
+
 let b_url = `https://api.themoviedb.org/3/`
 
 let key = `?api_key=617dfba34fac3c6681f2189d8b17203e` 
 
-
- 
 let d_endpoint = `discover/${stream_type ? stream_type : `movie`}`
 
 let genre_endpoint = `genre/movie/list`
 
-let end_lang = `&with_original_language=${lang.join("|")}`
+// let end_lang = `&with_original_language=${lang.join("|")}`
 
 let genre_url = b_url+genre_endpoint+key
 
@@ -41,9 +40,9 @@ function filter(){
 
 
 
-getMovies(api_url, page)
+getMovies(api_url )
 
-function getMovies(api_url,page){
+function getMovies(api_url){
 
     fetch(`${api_url}&page=${page}`)
     .then((res) =>{
@@ -88,7 +87,7 @@ function getMovies(api_url,page){
     let stream_url = b_url+`discover/`+e.target.value+key
 
     localStorage.setItem("stream_type", JSON.stringify(e.target.value))
-    getMovies(stream_url, page);
+    getMovies(stream_url);
 })
 
 
@@ -107,7 +106,7 @@ function getMovies(api_url,page){
 
 function changePage(p){
     
-    fetch(`https://api.themoviedb.org/3/movie/popular?api_key=617dfba34fac3c6681f2189d8b17203e&page=${p}`)
+    fetch(`${api_url}&page=${p}`)
     .then((res) =>{
         return res.json()
     })
@@ -142,7 +141,7 @@ function showMovies(data){
     document.getElementById("movies").innerHTML = ""
     data.map((ele) =>{
         document.getElementById("movies").innerHTML += `
-    <div class="col col-lg-2 col-md-2 col-sm-4 col-1">   
+    <div class="col col-lg-2 col-md-2 col-sm-4 col-sm-1">   
     <div class="card h-100" >
         <img src="https://image.tmdb.org/t/p/w500${ele.poster_path}" class="card-img-top" alt="...">
         <div class="card-body">
@@ -175,12 +174,13 @@ function pages(page){
 function showGenres(gen){
     gen.map((ele) =>{
         document.getElementById("genre").innerHTML += `
-             <div class="dropdown-item" ><input type="checkbox" value="${ele.id}" class="gen" /> ${ele.vote_average
-             }</div>
+             <div class="dropdown-item" ><input type="checkbox" value="${ele.id}" class="gen" />  ${ele.name}</div>
         `
     })
     console.log(showGenres)
 }
+
+
 
 document.getElementById("genre").addEventListener("change", function(e){
     console.log(e.target.value)
@@ -190,7 +190,7 @@ document.getElementById("genre").addEventListener("change", function(e){
 
     console.log(g_url)
 
-    getMovies(g_url, page)
+    getMovies(g_url)
 
 
 
