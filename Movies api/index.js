@@ -1,6 +1,9 @@
 let stream_type = JSON.parse(localStorage.getItem("stream_type"))
 let lang = JSON.parse(localStorage.getItem("lang"))
 
+let gen_arr = JSON.parse(localStorage.getItem("gen_arr")) || []
+
+let m_gen = `&with_genres=${gen_arr.join(",")}`
 
 let b_url = `https://api.themoviedb.org/3/`
 
@@ -14,7 +17,7 @@ let genre_endpoint = `genre/movie/list`
 
 let genre_url = b_url+genre_endpoint+key
 
-let api_url = b_url+d_endpoint+key ;
+let api_url = b_url+d_endpoint+key+m_gen ;
 
 
 
@@ -64,7 +67,8 @@ function getMovies(api_url){
     return res.json()
  })
  .then((data) =>{
-    showGenres(data.gen)
+    showGenres(data.genres)
+    console.log(data.genres)
     
  })
 
@@ -170,27 +174,37 @@ function pages(page){
     `
 }
 
+function filtergenre(id){
+ 
+    if(gen_arr.includes(id)){
+        gen_arr.splice(gen_arr.indexOf(id), 1)
+    }
+    else{
+        gen_arr.push(id)
+    }
+    
+    console.log(gen_arr)
+
+    localStorage.setItem("gen_arr", JSON.stringify(gen_arr))
+
+   location.reload()
+    // let g_url = b_url+`movie/`+id+`/similar`+key
+
+    // console.log(g_url)
+
+    // getMovies(g_url)
+
+
+ }
 
 function showGenres(gen){
     gen.map((ele) =>{
         document.getElementById("genre").innerHTML += `
-             <div class="dropdown-item" ><input type="checkbox" value="${ele.id}" class="gen" />  ${ele.name}</div>
+             <button onclick="filtergenre(${ele.id})" class="btn btn-sm ${gen_arr.includes(ele.id) ? `btn-warning` : `btn-outline-warning`} m-1">${ele.name}</button>
         `
     })
     console.log(showGenres)
 }
-
-
-
-document.getElementById("genre").addEventListener("change", function(e){
-    console.log(e.target.value)
-
-
-    let g_url = b_url+`movie/`+e.target.value`/similar`+key
-
-    console.log(g_url)
-
-    getMovies(g_url)
 
 
 
@@ -205,6 +219,3 @@ document.getElementById("genre").addEventListener("change", function(e){
     //     showMovies(data.results)
     //     pages(data.page)
     // })
-
-    
-})
