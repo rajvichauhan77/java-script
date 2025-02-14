@@ -43,7 +43,7 @@ function filter(){
 
 
 
-getMovies(api_url )
+getMovies(api_url)
 
 function getMovies(api_url){
 
@@ -188,6 +188,7 @@ function filtergenre(id){
     localStorage.setItem("gen_arr", JSON.stringify(gen_arr))
 
    location.reload()
+   
     // let g_url = b_url+`movie/`+id+`/similar`+key
 
     // console.log(g_url)
