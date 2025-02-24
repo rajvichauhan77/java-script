@@ -4,24 +4,24 @@ let b_url = `https://api.rootnet.in/covid19-in/stats/latest`
 
 
 
-document.getElementById("search").addEventListener("change", function(e){
+// document.getElementById("search").addEventListener("change", function(e){
 
-    let search = e.target.value
-    console.log(search)
+//     let search = e.target.value
+//     console.log(search)
 
-    fetch(b_url)
-    .then((res) => {
-        return res.json()
-    })
-    .then((data) => {
-        console.log(data)
-        Showcases(data)
-    })
+//     fetch(b_url)
+//     .then((res) => {
+//         return res.json()
+//     })
+//     .then((data) => {
+//         console.log(data)
+//         Showcases(data)
+//     })
     
 
-    console.log(e.target.value)
+//     console.log(e.target.value)
 
- })
+//  })
 
 
 
